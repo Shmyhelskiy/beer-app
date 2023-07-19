@@ -28,7 +28,7 @@ const RecipeForm:FC<RecipeDataProps> = ({data}) => {
     }
 
     return (
-        <div className={`w-[25%] h-full `} onContextMenu={rightHandleClick}>
+        <div className={`w-[20%] h-full `} onContextMenu={rightHandleClick}>
             <Link href={`/${id}`} className={`flex flex-col justify-center items-center p-3 m-3 ${!isChosen ? 'bg-sky-50' : 'bg-sky-200'}`}>
                 <RecipeInfo name={name} description={description} image_url={image_url}/>
             </Link>

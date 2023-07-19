@@ -1,7 +1,11 @@
 "use client"
 
 import useBeerStore from "./store"
-import RecipeForm from "./components/RecipeForm";
+import dynamic from "next/dynamic";
+
+const LazyRecipeForm = dynamic(() => import("./components/RecipeForm"), {
+  loading: () => <span>Loading...</span>, 
+});
 
 export default function Home() {
   const recipes = useBeerStore((state) => state.recipes);
@@ -21,9 +25,9 @@ export default function Home() {
       : 
         null
       }
-      <div className="w-full flex flex-wrap justify-around">
+      <div className="w-full flex flex-wrap justify-around row-span-5">
         {
-        recipes.length > 0 && recipes.slice(0, 15).map((item, ) => <RecipeForm data={item} />)
+        recipes.length > 0 && recipes.slice(0, 15).map((item, ) => <LazyRecipeForm data={item} />)
         } 
       </div>
     </main>
